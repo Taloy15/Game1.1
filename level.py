@@ -1,6 +1,6 @@
 import pygame
 from tiles import Tile
-from settings import TILESIZE
+from settings import TILESIZE, screen_width, screen_height
 from player import Player
 
 class Level:
@@ -23,8 +23,8 @@ class Level:
         if cell == 'p':
           player = Player((x,y))
           self.player.add(player)
-        
   
+ 
   #laat de gameplay werken
   def run(self):
     self.tiles.update(self.world_shift)

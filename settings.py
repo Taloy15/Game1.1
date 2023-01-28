@@ -1,7 +1,7 @@
 level_map = [
 '                   ',
 '         xxx       ',
-'x p                ',
+'x         p        ',
 'xxx x  x  x x      ',
 '  x   x  x x       ',
 ' x   xx xxxx       ',
