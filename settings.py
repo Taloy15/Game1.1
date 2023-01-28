@@ -1,12 +1,12 @@
 level_map = [
     '                   ',
-    '         xxx       ',
-    'x         p        ',
-    'xxx x  x  x x      ',
-    '  x   x  x x       ',
-    ' x   xx xxxx       ',
-    '   x     xxx       ',
-    'xx xx  xxxxxxxxx xx']
+    '    p  xxxxx       ',
+    'xx       xx        ',
+    'xxxxx  xxxxxx      ',
+    'xxx    x           ',
+    'xx   xxxxxxx       ',
+    '   xxxxxxxxxxxxx   ',
+    'xx xxxxxxxxxxxxx xx']
 
 TILESIZE = 64
 screen_height = 8 * TILESIZE

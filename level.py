@@ -40,12 +40,44 @@ class Level:
             player.speed = 8
             self.world_shift = 0
 
+    def x_movement_collision(self):
+        player = self.player.sprite
+
+        player.rect.x += player.direction.x * player.speed
+
+        for sprite in self.tiles.sprites():
+            if sprite.rect.colliderect(player.rect):
+                if player.direction.x > 0:
+                    player.rect.right = sprite.rect.left - 1
+                    player.direction.x = 0
+                elif player.direction.x < 0:
+                    player.rect.left = sprite.rect.right + 1
+                    player.direction.x = 0
+
+    def y_movement_collision(self):
+        player = self.player.sprite
+        player.apply_gravity()
+
+        for sprite in self.tiles.sprites():
+            if sprite.rect.colliderect(player.rect):
+                if player.direction.y > 0:
+                    player.rect.bottom = sprite.rect.top
+                    player.direction.y = 0
+                elif player.direction.y < 0:
+                    player.rect.top = sprite.rect.bottom
+                    player.direction.y = 0
+
+    def collision(self):
+        self.x_movement_collision()
+        self.y_movement_collision()
+
     # laat de gameplay werken
 
     def run(self):
         self.tiles.update(self.world_shift)
         self.tiles.draw(self.display_surface)
+        self.scroll_x()
 
         self.player.update()
+        self.collision()
         self.player.draw(self.display_surface)
-        self.scroll_x()
