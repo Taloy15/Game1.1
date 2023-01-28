@@ -22,4 +22,4 @@ while running:
     level.run()
 
     pygame.display.update()
-    clock.tick(60)
+    clock.tick(30)
