@@ -8,7 +8,7 @@ class Player(pygame.sprite.Sprite):
     self.rect = self.image.get_rect(topleft = pos)
     self.direction = pygame.Vector2(0,0)
     self.playerspeed = 8
-    
+  
 
   def get_input(self):
     keys = pygame.key.get_pressed()
