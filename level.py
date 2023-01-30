@@ -3,7 +3,6 @@ from tiles import Tile
 from settings import TILESIZE, screen_width, screen_height
 from player import Player
 
-
 class Level:
     def __init__(self, level_data, surface):
         self.display_surface = surface
@@ -23,7 +22,7 @@ class Level:
                     tile = Tile((x, y), TILESIZE)
                     self.tiles.add(tile)
                 if cell == 'p':
-                    player = Player((x, y))
+                    player = Player((x, y),self)
                     self.player.add(player)
 
     def scroll_x(self):
@@ -37,7 +36,7 @@ class Level:
             self.world_shift = -8
             player.speed = 0
         else:
-            player.speed = 8
+            player.speed = 20
             self.world_shift = 0
 
     def x_movement_collision(self):
@@ -58,14 +57,17 @@ class Level:
         player = self.player.sprite
         player.apply_gravity()
 
+        
         for sprite in self.tiles.sprites():
             if sprite.rect.colliderect(player.rect):
                 if player.direction.y > 0:
                     player.rect.bottom = sprite.rect.top
                     player.direction.y = 0
+                    ground = 1
                 elif player.direction.y < 0:
                     player.rect.top = sprite.rect.bottom
                     player.direction.y = 0
+                    ground = 0
 
     def collision(self):
         self.x_movement_collision()
