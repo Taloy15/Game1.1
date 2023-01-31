@@ -8,7 +8,8 @@ class Level:
         self.display_surface = surface
         self.setup_level(level_data)  # roept de setup_level functie aan
         self.world_shift = 0
-
+        self.screen_shift = self.player.sprite.speed
+        
     # creert alle sprites
     def setup_level(self, layout):
         self.tiles = pygame.sprite.Group()
@@ -29,15 +30,17 @@ class Level:
         player = self.player.sprite
         player_x = player.rect.centerx
         direction_x = player.direction.x
+        
         if player_x < (screen_width/4) and direction_x == -1:
-            self.world_shift = 8
-            player.speed = 0
+          self.world_shift =  self.screen_shift
+          player.speed = 0
+          
         elif player_x > (screen_width*0.75) and direction_x == 1:
-            self.world_shift = -8
-            player.speed = 0
+          self.world_shift = -self.screen_shift
+          player.speed = 0
         else:
-            player.speed = 20
-            self.world_shift = 0
+          player.speed = 8
+          self.world_shift = 0
 
     def x_movement_collision(self):
         player = self.player.sprite
@@ -47,10 +50,10 @@ class Level:
         for sprite in self.tiles.sprites():
             if sprite.rect.colliderect(player.rect):
                 if player.direction.x > 0:
-                    player.rect.right = sprite.rect.left - 1
+                    player.rect.right = sprite.rect.left 
                     player.direction.x = 0
                 elif player.direction.x < 0:
-                    player.rect.left = sprite.rect.right + 1
+                    player.rect.left = sprite.rect.right 
                     player.direction.x = 0
 
     def y_movement_collision(self):
@@ -83,3 +86,4 @@ class Level:
         self.player.update()
         self.collision()
         self.player.draw(self.display_surface)
+

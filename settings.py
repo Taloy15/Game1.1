@@ -6,7 +6,7 @@ level_map = [
     'xxx    x           ',
     'xx   xxxxxxx       ',
     '   xxxxxxxxxxxxx   ',
-    'xx xxxxxxxxxxxxx xx']
+    'xxxxxxxxxxxxxxxxxxx']
 
 TILESIZE = 64
 screen_height = 8 * TILESIZE
